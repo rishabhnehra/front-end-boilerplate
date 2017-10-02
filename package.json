@@ -1,0 +1,31 @@
+{
+  "name": "front-end-boilerplate",
+  "version": "1.0.0",
+  "description": "Boilerplate for your Front End Development",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rishabhnehra/front-end-boilerplate.git"
+  },
+  "keywords": [
+    "gulp",
+    "html",
+    "css",
+    "javascript",
+    "gulp"
+  ],
+  "author": "Rishabh Nehra",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rishabhnehra/front-end-boilerplate/issues"
+  },
+  "homepage": "https://github.com/rishabhnehra/front-end-boilerplate#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-sass": "^3.1.0"
+  }
+}
