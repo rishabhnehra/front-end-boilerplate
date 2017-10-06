@@ -7,18 +7,18 @@ const eslint = require('gulp-eslint')
 const concat = require('gulp-concat')
 const uglify = require('gulp-uglify')
 const babel = require('gulp-babel')
-const jade = require('gulp-jade')
+const pug = require('gulp-pug')
 
 gulp.task('default', ['serve'])
 
-gulp.task('serve', ['styles', 'scripts', 'jade'], () => {
+gulp.task('serve', ['styles', 'scripts', 'pug'], () => {
 	browserSync.init({
 		server: './dist'
 	})
 	gulp.watch('./scss/*.scss', ['styles'])
 	gulp.watch('./js/*.js', ['scripts'])
 	gulp.watch('./dist/*.html').on('change', browserSync.reload)
-	gulp.watch('*.jade', ['jade'])
+	gulp.watch('*.pug', ['pug'])
 })
 
 gulp.task('styles', () => {
@@ -47,9 +47,9 @@ gulp.task('lint', () => {
 		.pipe(eslint.failAfterError())
 })
 
-gulp.task('jade', () => {
-	gulp.src('index.jade')
-		.pipe(jade())
+gulp.task('pug', () => {
+	gulp.src('index.pug')
+		.pipe(pug())
 		.pipe(gulp.dest('./dist'))
 })
 
