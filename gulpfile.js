@@ -10,7 +10,7 @@ const babel = require('gulp-babel')
 
 gulp.task('default', ['serve'])
 
-gulp.task('serve', ['styles', 'scripts'], () => {
+gulp.task('serve', ['styles', 'scripts', 'html'], () => {
 	browserSync.init({
 		server: './dist'
 	})
