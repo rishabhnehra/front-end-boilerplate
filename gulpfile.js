@@ -7,18 +7,17 @@ const eslint = require('gulp-eslint')
 const concat = require('gulp-concat')
 const uglify = require('gulp-uglify')
 const babel = require('gulp-babel')
-const pug = require('gulp-pug')
 
 gulp.task('default', ['serve'])
 
-gulp.task('serve', ['styles', 'scripts', 'pug'], () => {
+gulp.task('serve', ['styles', 'scripts'], () => {
 	browserSync.init({
 		server: './dist'
 	})
-	gulp.watch('./scss/*.scss', ['styles'])
-	gulp.watch('./js/*.js', ['scripts'])
+	gulp.watch('./scss/**/*.scss', ['styles'])
+	gulp.watch('./js/**/*.js', ['scripts'])
 	gulp.watch('./dist/*.html').on('change', browserSync.reload)
-	gulp.watch('*.pug', ['pug'])
+	gulp.watch('./*.html', ['html'])
 })
 
 gulp.task('styles', () => {
@@ -37,6 +36,7 @@ gulp.task('scripts', () => {
 			presets: ['env']
 		}))
 		.pipe(concat('all.js'))
+		.pipe(uglify())
 		.pipe(gulp.dest('./dist/js'))
 })
 
@@ -47,9 +47,8 @@ gulp.task('lint', () => {
 		.pipe(eslint.failAfterError())
 })
 
-gulp.task('pug', () => {
-	gulp.src('index.pug')
-		.pipe(pug())
+gulp.task('html', () => {
+	gulp.src('./*.html')
 		.pipe(gulp.dest('./dist'))
+		.pipe(browserSync.stream())
 })
-
